@@ -1,6 +1,6 @@
 ﻿namespace VMixHTTP.Browser;
 
-public class Browser
+internal class Browser
 {
     
 }

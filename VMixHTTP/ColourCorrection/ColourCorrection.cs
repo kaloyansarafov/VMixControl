@@ -1,6 +1,6 @@
 ﻿namespace VMixHTTP.ColourCorrection;
 
-public class ColourCorrection
+internal class ColourCorrection
 {
     
 }
