@@ -26,7 +26,7 @@ public class vMix
         }
     }
     
-    public List<vMixInput?>? Inputs { get; set; }
+    public List<vMixInput>? Inputs { get; set; }
     public List<vMixOverlay>? Overlays { get; set; }
     public List<vMixTransition>? Transitions { get; set; }
     

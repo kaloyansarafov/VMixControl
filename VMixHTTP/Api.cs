@@ -8,7 +8,7 @@ using VMixHTTP.Audio;
 public class vMixClient
 {
     private readonly HttpClient _client;
-    private string url { get; init; }
+    private readonly string _url;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="vMixClient"/> class.
@@ -17,7 +17,7 @@ public class vMixClient
     public vMixClient(string url)
     {
         _client = new HttpClient();
-        this.url = url;
+        _url = url;
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public class vMixClient
     /// <returns>A task that represents the asynchronous operation. The task result contains the API response.</returns>
     private async Task<string> SendRequestAsync(string request)
     {
-        var response = await _client.GetAsync($"{url}/api/?{request}");
+        var response = await _client.GetAsync($"{_url}/api/?{request}");
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();
     }
@@ -164,22 +164,22 @@ public class vMixClient
         return await SendRequestAsync(Audio.Audio.AudioOn(input));
     }
 
-    public async Task<string> AudioPluginOnAsync(string input, string pluginNumber)
+    public async Task<string> AudioPluginOnAsync(string input, int pluginNumber)
     {
         return await SendRequestAsync(Audio.Audio.AudioPluginOn(input, pluginNumber));
     }
 
-    public async Task<string> AudioPluginOffAsync(string input, string pluginNumber)
+    public async Task<string> AudioPluginOffAsync(string input, int pluginNumber)
     {
         return await SendRequestAsync(Audio.Audio.AudioPluginOff(input, pluginNumber));
     }
 
-    public async Task<string> AudioPluginOnOffAsync(string input, string pluginNumber)
+    public async Task<string> AudioPluginOnOffAsync(string input, int pluginNumber)
     {
         return await SendRequestAsync(Audio.Audio.AudioPluginOnOff(input, pluginNumber));
     }
     
-    public async Task<string> AudioPluginShowAsync(string input, string pluginNumber)
+    public async Task<string> AudioPluginShowAsync(string input, int pluginNumber)
     {
         return await SendRequestAsync(Audio.Audio.AudioPluginShow(input, pluginNumber));
     }

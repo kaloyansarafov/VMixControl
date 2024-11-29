@@ -4,6 +4,12 @@ namespace VMixHTTP;
 
 public static class vMixXMLParser
 {
+    
+    /// <summary>
+    /// Parses the specified XML string into a <see cref="vMix"/> object.
+    /// </summary>
+    /// <param name="xml">The XML document returned by the vMix web api</param>
+    /// <returns>An instance of a vMix object</returns>
     public static vMix Parse(string xml)
     {
         var doc = XDocument.Parse(xml);
